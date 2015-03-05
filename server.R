@@ -2,6 +2,7 @@
 
 library(shiny)
 source("helpers.R")
+source("stateTax.R")
 
 # Define server logic required to draw a histogram
 shinyServer(
@@ -10,14 +11,17 @@ shinyServer(
     getFed <- reactive({
       fed_tax(as.numeric(input$income))
     })
-    getState <- reactive({
-      if(input$state=="AK"||input$state=="FL"||input$state=="NV"||
-           input$state=="NH"||input$state=="SD"||input$state=="TN"||
-           input$state=="TX"||input$state=="WA"||input$state=="WY"){
-        return(state_tax(as.numeric(input$income), "NT"))
-      }
-      state_tax(as.numeric(input$income), input$state)
+    getState <- reactive({ 
+        stateTax(input$state, input$status, as.numeric(input$income))
     })
+#    getState <- reactive({
+#      if(input$state=="AK"||input$state=="FL"||input$state=="NV"||
+#           input$state=="NH"||input$state=="SD"||input$state=="TN"||
+#           input$state=="TX"||input$state=="WA"||input$state=="WY"){
+#        return(state_tax(as.numeric(input$income), "NT"))
+#      }
+#      state_tax(as.numeric(input$income), input$state)
+#    })
     getFICA <- reactive({
       fica(input$income)
     })    
