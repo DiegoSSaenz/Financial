@@ -11,7 +11,7 @@ shinyServer(
     getFed <- reactive({
       fed_tax(as.numeric(input$income))
     })
-    getState <- reactive({
+    getState <- reactive({ 
         stateTax(input$state, input$status, as.numeric(input$income))
     })
 #    getState <- reactive({

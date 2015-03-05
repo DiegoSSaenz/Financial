@@ -11,7 +11,6 @@ shinyUI(fluidPage(
              numericInput("income", label = h5("Gross Income:"), 
                           value = 50000)),
       column(width = 3.6, offset = 0,
-<<<<<<< HEAD
              selectInput("status", 
                          label = h5("Status:"),
                          choices = list("single","joint"),
@@ -34,15 +33,7 @@ shinyUI(fluidPage(
                                         "Tenn.","Utah","Vermont",
                                         "Virginia","West Virginia","Wisconsin",
                                         "D.C."),
-                         selected = "Alabama"))
-=======
-             selectInput("state", 
-                         label = h5("State:"),
-                         choices = list("AK","CO","IL","IN","FL","MD","NV",
-                                        "NH","SD","TN","TX","WA","WY"),
-                         selected = "MD"))
->>>>>>> 0db0cfa1bb8018c49c828092d54f2a6d2f7ca2fd
-      
+                         selected = "Alabama"))      
     )
   ),
   mainPanel(textOutput("text1")
