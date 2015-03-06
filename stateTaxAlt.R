@@ -1,3 +1,6 @@
+# Example call:
+# stateTax("Maryland", "single", 100000)
+
 stateTaxAlt <-
     function (state, status, wage) {
         
@@ -27,6 +30,36 @@ stateTaxAlt <-
         
     }
 
+# Calculates local taxes based on the average for the state
 # Example call:
-#
-# stateTax("Maryland", "single", 100000)
+# localTax("Maryland", "single", 100000)
+localTax <- function (state, status, wage) {
+    
+    library(dplyr)
+    
+    localTax <- tbl_df(read.csv("localTax.csv", stringsAsFactors=FALSE))
+    localTax$state <- gsub(" \\(.+\\)", "", localTax$state, perl=TRUE)
+    localTax$state <- gsub("\\(.+\\)", "", localTax$state, perl=TRUE)
+    
+    localTax_1 <- localTax[localTax$state == state,]
+    localTax_2 <- localTax_1[localTax_1$type == status,]
+    
+    if(wage < localTax_2$bracket[1]){
+        return(wage * localTax_2$rate[1])
+    }
+    
+    cum <- localTax_2$bracket[1] * localTax_2$rate[1]
+    for(i in 2:length(localTax_2$bracket)){
+        if(wage > localTax_2$bracket[i]){
+            cum <- cum+(localTax_2$bracket[i]-localTax_2$bracket[i-1])*
+                localTax_2$rate[i]
+        } else {
+            return(cum + (wage - localTax_2$bracket[i-1]) *
+                       localTax_2$rate[i])
+        }
+    }      
+    
+}
+
+
+
