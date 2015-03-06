@@ -3,11 +3,8 @@ stateTax <-
     
     library(dplyr)
     
-<<<<<<< HEAD
     stateTax <- tbl_df(read.csv("stateTax.csv", stringsAsFactors=FALSE))
-=======
-    stateTax <- tbl_df(read.csv("~/Dropbox/stateTax.csv", stringsAsFactors=FALSE))
->>>>>>> 0db0cfa1bb8018c49c828092d54f2a6d2f7ca2fd
+#    stateTax <- tbl_df(read.csv("~/Dropbox/stateTax.csv", stringsAsFactors=FALSE))
     stateTax$state <- gsub(" \\(.+\\)", "", stateTax$state, perl=TRUE)
     stateTax$state <- gsub("\\(.+\\)", "", stateTax$state, perl=TRUE)
     
