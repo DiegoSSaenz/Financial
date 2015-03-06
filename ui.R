@@ -7,15 +7,15 @@ shinyUI(fluidPage(
   
   inputPanel(
     fixedRow(
-      column(width = 3.6, offset = 0,
+      column(width = 3.6, offset = 0.0,
              numericInput("income", label = h5("Gross Income:"), 
                           value = 50000)),
-      column(width = 3.6, offset = 0,
+      column(width = 3.6, offset = 0.0,
              selectInput("status", 
                          label = h5("Status:"),
                          choices = list("single","joint"),
                          selected = "single")),
-      column(width = 3.6, offset = 0,
+      column(width = 3.6, offset = 0.0,
              selectInput("state", 
                          label = h5("State:"),
                          choices = list("Alabama","Alaska","Arizona",

@@ -13,7 +13,8 @@ shinyServer(
       fed_tax(as.numeric(input$income))
     })
     getState <- reactive({ 
-        stateTaxAlt(input$state, input$status, as.numeric(input$income))
+        stateTaxAlt(input$state, input$status, as.numeric(input$income))+
+            localTax(input$state, input$status, as.numeric(input$income))
     })
 #    getState <- reactive({
 #      if(input$state=="AK"||input$state=="FL"||input$state=="NV"||
