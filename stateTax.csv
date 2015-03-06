@@ -73,6 +73,8 @@ Delaware (v),joint,0.048,20000
 Delaware (v),joint,0.052,25000
 Delaware (v),joint,0.0555,60000
 Delaware (v),joint,0.066,10000000000
+Florida,single,0,10000000000
+Florida,joint,0,10000000000
 Georgia,single,0.01,750
 Georgia,single,0.02,2250
 Georgia,single,0.03,3750
@@ -247,6 +249,8 @@ Nebraska,joint,0.0246,6000
 Nebraska,joint,0.0351,36000
 Nebraska,joint,0.0501,58000
 Nebraska,joint,0.0684,10000000000
+Nevada,single,0,10000000000
+Nevada,joint,0,10000000000
 New Hampshire (c),single,0.05,10000000000
 New Hampshire (c),joint,0.05,10000000000
 New Jersey,single,0.014,20000
@@ -322,14 +326,14 @@ Oklahoma (a),single,0.02,3750
 Oklahoma (a),single,0.03,4900
 Oklahoma (a),single,0.04,7200
 Oklahoma (a),single,0.05,8700
-Oklahoma (a),single,5.25% (cc),10000000000
+Oklahoma (a),single,0.0525,10000000000
 Oklahoma (a),joint,0.005,2000
 Oklahoma (a),joint,0.01,5000
 Oklahoma (a),joint,0.02,7500
 Oklahoma (a),joint,0.03,9800
 Oklahoma (a),joint,0.04,12200
 Oklahoma (a),joint,0.05,15000
-Oklahoma (a),joint,5.25% (cc),10000000000
+Oklahoma (a),joint,0.0525,10000000000
 "Oregon (a, e, f, j)",single,0.05,3300
 "Oregon (a, e, f, j)",single,0.07,8250
 "Oregon (a, e, f, j)",single,0.09,125000
@@ -338,14 +342,16 @@ Oklahoma (a),joint,5.25% (cc),10000000000
 "Oregon (a, e, f, j)",joint,0.07,16300
 "Oregon (a, e, f, j)",joint,0.09,250000
 "Oregon (a, e, f, j)",joint,0.099,10000000000
-Pennsylvania,single,3.07% (hh),10000000000
-Pennsylvania,joint,3.07% (hh),10000000000
+Pennsylvania,single,0.0307,10000000000
+Pennsylvania,joint,0.0307,10000000000
 Rhode Island (e),single,0.0375,59600
 Rhode Island (e),single,0.0475,135500
 Rhode Island (e),single,0.0599,10000000000
 Rhode Island (e),joint,0.0375,59600
 Rhode Island (e),joint,0.0475,135500
 Rhode Island (e),joint,0.0599,10000000000
+South Dakota,single,0,10000000000
+South Dakoa,joint,0,10000000000
 South Carolina (e),single,0,2880
 South Carolina (e),single,0.03,5760
 South Carolina (e),single,0.04,8640
@@ -360,6 +366,8 @@ South Carolina (e),joint,0.06,14400
 South Carolina (e),joint,0.07,10000000000
 Tenn.(c),single,0.06,10000000000
 Tenn.(c),joint,0.06,10000000000
+Texas,single,0,10000000000
+Texas,joint,0,10000000000
 Utah,single,0.05,10000000000
 Utah,joint,0.05,10000000000
 Vermont,single,0.0355,36900
@@ -380,6 +388,8 @@ Virginia,joint,0.02,3000
 Virginia,joint,0.03,5000
 Virginia,joint,0.05,17000
 Virginia,joint,0.0575,10000000000
+Washington,single,0,10000000000
+Washington,joint,0,10000000000
 West Virginia (a),single,0.03,10000
 West Virginia (a),single,0.04,25000
 West Virginia (a),single,0.045,40000
@@ -398,6 +408,8 @@ Wisconsin (e),joint,0.04,14540
 Wisconsin (e),joint,0.0584,29090
 Wisconsin (e),joint,0.0627,320250
 Wisconsin (e),joint,0.0765,10000000000
+Wyoming,single,0,10000000000
+Wyoming,joint,0,10000000000
 D.C.,single,0.04,10000
 D.C.,single,0.06,40000
 D.C.,single,0.085,350000
