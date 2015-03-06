@@ -5,6 +5,8 @@ state,type,rate,bracket
 "Alabama (a, f)",joint,0.02,1000
 "Alabama (a, f)",joint,0.04,6000
 "Alabama (a, f)",joint,0.05,10000000000
+Alaska,single,0,10000000000
+Alaska,joint,0,10000000000
 Arizona,single,0.0259,10000
 Arizona,single,0.0288,25000
 Arizona,single,0.0336,50000
