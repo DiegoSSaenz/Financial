@@ -6,7 +6,7 @@ stateTaxAlt <-
         
         library(dplyr)
         
-        stateTax <- tbl_df(read.csv("stateTax.csv", stringsAsFactors=FALSE))
+        stateTax <- tbl_df(read.csv("stateTax2.csv", stringsAsFactors=FALSE))
         stateTax$state <- gsub(" \\(.+\\)", "", stateTax$state, perl=TRUE)
         stateTax$state <- gsub("\\(.+\\)", "", stateTax$state, perl=TRUE)
         
@@ -33,32 +33,68 @@ stateTaxAlt <-
 # Calculates local taxes based on the average for the state
 # Example call:
 # localTax("Maryland", "single", 100000)
-localTax <- function (state, status, wage) {
-    
-    library(dplyr)
-    
+# localTax <- function (state, status, wage) {
+#     
+#     library(dplyr)
+#         
+#     localTax <- tbl_df(read.csv("localTax.csv", stringsAsFactors=FALSE))
+#     localTax$state <- gsub(" \\(.+\\)", "", localTax$state, perl=TRUE)
+#     localTax$state <- gsub("\\(.+\\)", "", localTax$state, perl=TRUE)
+#     
+#     localTax_1 <- localTax[localTax$state == state,]
+#     
+#     if(wage < localTax_1$bracket[1]){
+#         return(wage * localTax_1$rate[1])
+#     }
+#     
+#     cum <- localTax_1$bracket[1] * localTax_1$rate[1]
+#     for(i in 2:length(localTax_1$bracket)){
+#         if(wage > localTax_1$bracket[i]){
+#             cum <- cum+(localTax_1$bracket[i]-localTax_1$bracket[i-1])*
+#                 localTax_1$rate[i]
+#         } else {
+#             return(cum + (wage - localTax_1$bracket[i-1]) *
+#                        localTax_1$rate[i])
+#         }
+#     }      
+#     
+# }
+
+# returns TRUE if the state has locality taxes and FALSE if the state
+# does not
+hasLocality <- function(state){
     localTax <- tbl_df(read.csv("localTax.csv", stringsAsFactors=FALSE))
     localTax$state <- gsub(" \\(.+\\)", "", localTax$state, perl=TRUE)
     localTax$state <- gsub("\\(.+\\)", "", localTax$state, perl=TRUE)
     
     localTax_1 <- localTax[localTax$state == state,]
-    localTax_2 <- localTax_1[localTax_1$type == status,]
     
-    if(wage < localTax_2$bracket[1]){
-        return(wage * localTax_2$rate[1])
-    }
+    localTax_1$rate != 0
+}
+
+localTax <- function (state, locality, wage) {
     
-    cum <- localTax_2$bracket[1] * localTax_2$rate[1]
-    for(i in 2:length(localTax_2$bracket)){
-        if(wage > localTax_2$bracket[i]){
-            cum <- cum+(localTax_2$bracket[i]-localTax_2$bracket[i-1])*
-                localTax_2$rate[i]
-        } else {
-            return(cum + (wage - localTax_2$bracket[i-1]) *
-                       localTax_2$rate[i])
-        }
-    }      
+    library(dplyr)
+        
+    localTax <- tbl_df(read.csv("localities.csv", stringsAsFactors=FALSE))
+    localTax$state <- gsub(" \\(.+\\)", "", localTax$state, perl=TRUE)
+    localTax$state <- gsub("\\(.+\\)", "", localTax$state, perl=TRUE)
     
+    localTax_1 <- localTax[localTax$state == state,]
+    localTax_2 <- localTax_1[localTax_1$locality == locality,]
+    
+    return(wage * localTax_2$rate[1] + localTax_2$flatFee +
+               fed_tax(as.numeric(wage)))     
+    
+}
+
+localityList <- function(state){
+    localTax <- tbl_df(read.csv("localities.csv", stringsAsFactors=FALSE))
+    localTax$state <- gsub(" \\(.+\\)", "", localTax$state, perl=TRUE)
+    localTax$state <- gsub("\\(.+\\)", "", localTax$state, perl=TRUE)
+    
+    localTax_1 <- localTax[localTax$state == state,]
+    localTax_1$locality
 }
 
 

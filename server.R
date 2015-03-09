@@ -5,17 +5,25 @@ source("helpers.R")
 source("stateTax.R")
 source("stateTaxAlt.R")
 
-# Define server logic required to draw a histogram
+
+
+# Set up input
 shinyServer(
   function(input, output) {
-    
+          
     getFed <- reactive({
       fed_tax(as.numeric(input$income))
     })
-    getState <- reactive({ 
-        stateTaxAlt(input$state, input$status, as.numeric(input$income))+
-            localTax(input$state, input$status, as.numeric(input$income))
+    getState <- reactive({
+        if(hasLocality(input$state) == TRUE){
+            stateTaxAlt(input$state, input$status, as.numeric(input$income))+
+                localTax(input$state, input$locality, 
+                         as.numeric(input$income))
+        } else {
+            stateTaxAlt(input$state, input$status, as.numeric(input$income))
+        }        
     })
+    
 #    getState <- reactive({
 #      if(input$state=="AK"||input$state=="FL"||input$state=="NV"||
 #           input$state=="NH"||input$state=="SD"||input$state=="TN"||
@@ -29,6 +37,14 @@ shinyServer(
     })    
     getTotal <- reactive({
       total_tax(as.numeric(input$income), getState())
+    })
+    output$localityPanel = renderUI({
+        if(hasLocality(input$state) == TRUE){
+            selectInput("locality",
+                        label = h5("Locality:"),
+                        choices = localityList(input$state)
+                        )
+        }
     })
     output$text1 <- renderText({
       paste("Based on an income of $",formatC(input$income,digits=2,
