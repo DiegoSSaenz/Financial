@@ -9,7 +9,7 @@ shinyUI(fluidPage(
   inputPanel(
     fixedRow(
       column(width = 3.6, offset = 0.0,
-             numericInput("income", label = h5("Gross Income:"), 
+             numericInput("income", label = h5("Adjusted Gross Income:"), 
                           value = 50000)),
       
       width = 3.6, offset = 0.0,
@@ -41,32 +41,8 @@ shinyUI(fluidPage(
                                         "Tennessee","Texas","Utah","Vermont",
                                         "Virginia","West Virginia",
                                         "Wisconsin"),
-                         selected = "Alaska")),
+                         selected = "Alabama")),
       uiOutput("localityPanel")
-#       conditionalPanel(
-#           condition = "input.state == 'Alabama'",
-#           selectInput("locality",
-#                       label = h5("Locality:"),
-#                       choices = localityList(state),
-#                       ))
-#       conditionalPanel(
-#           condition = "input.state == 'Maryland'",
-#           selectInput("locality",
-#                       label = h5("Locality:"),
-#                       choices = list("Allegany County","Anne Arundel County",
-#                                      "Baltimore (city)","Baltimore County",
-#                                      "Calvert County","Caroline Conty",
-#                                      "Carroll County","Cecil County",
-#                                      "Charles County","Dorchester County",
-#                                      "Frederick County","Garrett County",
-#                                      "Harford County","Howard County",
-#                                      "Kent County","Montgomery County",
-#                                      "Prince George's County",
-#                                      "Queen Anne's County",
-#                                      "St. Mary's County","Somerset County",
-#                                      "Talbot County","Washington County",
-#                                      "Wicomico County","Worcester County"),
-#                       ))
     )
   ),
   mainPanel(textOutput("text1")
