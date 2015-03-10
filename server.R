@@ -17,21 +17,13 @@ shinyServer(
     getState <- reactive({
         if(hasLocality(input$state) == TRUE){
             stateTaxAlt(input$state, input$status, as.numeric(input$income))+
-                localTax(input$state, input$locality, 
+                localTax(input$state, input$status, input$locality, 
                          as.numeric(input$income))
         } else {
             stateTaxAlt(input$state, input$status, as.numeric(input$income))
         }        
     })
     
-#    getState <- reactive({
-#      if(input$state=="AK"||input$state=="FL"||input$state=="NV"||
-#           input$state=="NH"||input$state=="SD"||input$state=="TN"||
-#           input$state=="TX"||input$state=="WA"||input$state=="WY"){
-#        return(state_tax(as.numeric(input$income), "NT"))
-#      }
-#      state_tax(as.numeric(input$income), input$state)
-#    })
     getFICA <- reactive({
       fica(input$income)
     })    
