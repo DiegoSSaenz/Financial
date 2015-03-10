@@ -36,9 +36,10 @@ stateTaxAlt <- function (name, status, wage) {
     stateTax$state <- gsub(" \\(.+\\)", "", stateTax$state, perl=TRUE)
     stateTax$state <- gsub("\\(.+\\)", "", stateTax$state, perl=TRUE)
     
-    sTax <- stateTax %>% filter(state==name, type==status) %>%
-            mutate(amt=rate*pmin(bracket, pmax(wage-lag(cumBracket),0),na.rm=T)) %>%
-            summarise(amtTotal=sum(amt))
+    stateTax %>% filter(state==name, type==status) %>%
+        mutate(amt=rate*pmin(bracket, pmax(wage-lag(cumBracket),0),na.rm=T)) %>%
+        mutate(value=ifelse(is.finite(sum(amt)), sum(amt), wage*rate)) %>%   
+        summarise(tax=max(value))
     
 }
 
